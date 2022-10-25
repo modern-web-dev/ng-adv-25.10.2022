@@ -3,9 +3,11 @@ import {BrowserModule} from '@angular/platform-browser';
 
 import {AppComponent} from './app.component';
 import {HttpClientModule} from '@angular/common/http';
-import {UserModule} from './user/user.module';
+import {UserModule} from '@user/user.module';
 import {RouterModule} from '@angular/router';
 import {SharedModule} from '@shared/shared.module';
+import {PortalModule} from '@portal/portal.module';
+import {routes} from './routes';
 
 @NgModule({
   declarations: [
@@ -15,10 +17,10 @@ import {SharedModule} from '@shared/shared.module';
     BrowserModule,
     HttpClientModule,
     SharedModule.forRoot(),
+    PortalModule,
     UserModule.forRoot(),
-    RouterModule.forRoot([])
+    RouterModule.forRoot(routes)
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {

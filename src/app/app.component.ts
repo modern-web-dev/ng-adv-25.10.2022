@@ -1,7 +1,4 @@
-import { Component } from '@angular/core';
-import {UserService} from './user/services/user.service';
-import {Observable} from 'rxjs';
-import {User} from './user/model';
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'ua-root',
@@ -9,9 +6,4 @@ import {User} from './user/model';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  readonly users$: Observable<User[]>;
-
-  constructor(users: UserService) {
-    this.users$ = users.findAll();
-  }
 }

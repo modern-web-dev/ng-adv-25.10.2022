@@ -12,3 +12,7 @@ export interface User extends Omit<UserTo, 'createdAt' | 'dateOfBirth'> {
 }
 
 export type UserProps = Omit<User, 'id' | 'createdAt'>;
+
+export interface UserSearchCriteria {
+  query?: string;
+}

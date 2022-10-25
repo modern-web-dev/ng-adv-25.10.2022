@@ -1,6 +1,7 @@
 import {ModuleWithProviders, NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormatDateTimePipe} from '@shared/i18n/format-date-time.pipe';
+import {ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [FormatDateTimePipe],
@@ -8,7 +9,7 @@ import {FormatDateTimePipe} from '@shared/i18n/format-date-time.pipe';
     CommonModule
   ],
   exports: [
-    CommonModule,
+    CommonModule, ReactiveFormsModule,
     FormatDateTimePipe
   ]
 })

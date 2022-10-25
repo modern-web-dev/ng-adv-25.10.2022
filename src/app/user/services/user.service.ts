@@ -2,6 +2,7 @@ import {map, Observable} from 'rxjs';
 import {User, UserTo} from '../model';
 import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
+import {parseDatePropertiesForEachElementOf} from '@shared/i18n/date-utils';
 
 @Injectable()
 export class UserService {
@@ -10,12 +11,7 @@ export class UserService {
 
   findAll(): Observable<User[]> {
     return this.http.get<UserTo[]>('http://localhost:3000/users')
-      .pipe(map(userTos => {
-        return userTos.map(userTo => ({
-          ...userTo,
-          createdAt: new Date(userTo.createdAt),
-          dateOfBirth: new Date(userTo.dateOfBirth)
-        }));
-      }));
+      .pipe(map(userTos => parseDatePropertiesForEachElementOf<UserTo, User>(
+        userTos, ['dateOfBirth', 'createdAt'])));
   }
 }

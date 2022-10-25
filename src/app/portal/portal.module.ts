@@ -1,12 +1,14 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-
-
+import {NgModule} from '@angular/core';
+import {SharedModule} from '@shared/shared.module';
+import {RouteNotFoundComponent} from './components/route-not-found/route-not-found.component';
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    RouteNotFoundComponent
+  ],
   imports: [
-    CommonModule
+    SharedModule
   ]
 })
-export class PortalModule { }
+export class PortalModule {
+}
