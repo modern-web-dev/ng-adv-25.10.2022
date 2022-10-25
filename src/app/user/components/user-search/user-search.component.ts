@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, Input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
 import {UserSearchCriteria} from '@user/model';
 import {FormControl} from '@angular/forms';
 
@@ -11,6 +11,7 @@ import {FormControl} from '@angular/forms';
 export class UserSearchComponent {
   readonly queryFormControl = new FormControl<string | null>(null);
 
+  @Output()
   readonly criteriaChange = new EventEmitter<UserSearchCriteria>();
 
   @Input()
