@@ -5,6 +5,7 @@ import {AppComponent} from './app.component';
 import {HttpClientModule} from '@angular/common/http';
 import {UserModule} from './user/user.module';
 import {RouterModule} from '@angular/router';
+import {SharedModule} from '@shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -13,6 +14,7 @@ import {RouterModule} from '@angular/router';
   imports: [
     BrowserModule,
     HttpClientModule,
+    SharedModule.forRoot(),
     UserModule.forRoot(),
     RouterModule.forRoot([])
   ],
