@@ -1,6 +1,10 @@
-<ua-user-search class="mb-3 mt-3"
-                [criteria]="criteria$ | async"
-                (criteriaChange)="updateUrlWithNewCriteriaOf($event)" >
-</ua-user-search>
-<ua-user-results
-  [results]="results$ | async"></ua-user-results>
+<ua-dialog-frame title="User Overview">
+  <ua-user-search class="mb-3 mt-3"
+                  [criteria]="criteria$ | async"
+                  (criteriaChange)="updateUrlWithNewCriteriaOf($event)">
+  </ua-user-search>
+  <ua-user-results
+    [results]="results$ | async"
+    (userClick)="goToUserDetails($event)"></ua-user-results>
+</ua-dialog-frame>
+

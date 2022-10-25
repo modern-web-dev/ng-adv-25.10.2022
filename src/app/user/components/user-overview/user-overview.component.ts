@@ -21,14 +21,27 @@ export class UserOverviewComponent {
       mapFromParamsToCriteria()
     );
     this.results$ = this.criteria$.pipe(
-      switchMap(criteria => this.users.findBy(criteria))
+      this.mapFromCriteriaToResults(),
+      // mapFromCriteriaToResultsWithService(this.users)
     );
   }
 
   updateUrlWithNewCriteriaOf(newCriteria: UserSearchCriteria) {
     const params: Params = {query: newCriteria.query || ''};
-    this.router.navigate([params], {relativeTo: this.currentRoute}); // -> /users/3547;a=67
+    this.router.navigate([params], {relativeTo: this.currentRoute}); // -> /users;query=adam
   }
+
+  goToUserDetails(user: User) {
+    this.router.navigate([user.id], {relativeTo: this.currentRoute}); // -> /users;query=adam/123
+  }
+
+  private mapFromCriteriaToResults(): OperatorFunction<UserSearchCriteria, User[]> {
+    return switchMap(criteria => this.users.findBy(criteria));
+  }
+}
+
+function mapFromCriteriaToResultsWithService(users: UserService):OperatorFunction<UserSearchCriteria, User[]> {
+  return switchMap(criteria => users.findBy(criteria));
 }
 
 function mapFromParamsToCriteria(): OperatorFunction<Params, UserSearchCriteria> {

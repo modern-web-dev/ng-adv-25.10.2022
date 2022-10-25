@@ -1,2 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
-@import "node_modules/bootstrap/scss/bootstrap";
+
+@use "ag-grid-community/styles" as ag;
+@import "bootstrap/scss/bootstrap";
+
+html, body, main {
+  height: 100%;
+}
+
+// define custom AG Grid theme
+@include ag.grid-styles((
+  theme: us,
+  extend-theme: alpine
+));
