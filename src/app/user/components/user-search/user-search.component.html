@@ -1,2 +1,7 @@
-<input type="text" class="form-control" [formControl]="queryFormControl">
+<div class="form-floating me-2">
+  <input id="query" type="text" class="form-control form-control-lg" placeholder="Query"
+         [formControl]="queryFormControl">
+  <label for="query">Query</label>
+</div>
+
 <button class="btn btn-primary" (click)="notifyOnCriteriaChange()">Search</button>
